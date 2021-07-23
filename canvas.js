@@ -50,6 +50,7 @@ function mousePressed(e) {
     });
 
     updateMineCount();
+    return false;
 }
 
 function setup() {
