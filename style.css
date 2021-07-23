@@ -1,0 +1,31 @@
+html, body, div {
+    width: 100%;
+}
+
+html, body, div, canvas {
+    margin: 0;
+}
+
+#canvas-container {
+    display: grid;
+    place-items: center;
+    margin-bottom: 1em;
+}
+
+#mine-count {
+    max-width: 6ch;
+    min-width: 6ch;
+    background-color: #fff;
+}
+
+.input-container {
+    margin: 1em auto;
+    padding: 0 1em;
+}
+
+.title {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
