@@ -12,28 +12,32 @@ function preload() {
     flag = loadImage('./flag.png');
 }
 
+function startNewGame(init) {
+    if (!init)
+        select('#canvas-container')
+            .style('display', 'grid');
+
+    select('#mine-count').value(mineAmount);
+    currentMineAmount = mineAmount;
+    const w = cols * scl, h = rows * scl;
+    setupCanvas(w, h);
+
+    startGrid();
+}
+
 function updateGameOptions() {
-    const mineCountInput = select('#mine-count');
-    switch (parseInt(select('#difficulty').selected(), 10)) {
-        case 1:
-            mineCountInput.value(10);
-            mineAmount = 10;
-            cols = 9;
-            rows = 9;
-            break;
-        case 2:
-            mineCountInput.value(40);
-            mineAmount = 40;
-            cols = 16;
-            rows = 16;
-            break;
-        case 3:
-            mineCountInput.value(99);
-            mineAmount = 99;
-            cols = 30;
-            rows = 16;
-            break;
+    function getOption() {
+        const value = select('#difficulty').selected();
+        if (value === '2') return 'medium';
+        if (value === '3') return 'hard';
+        return 'small';
     }
+    const mineCountInput = select('#mine-count');
+    const option = difficultyOptions[getOption()];
+    mineCountInput.value(option.mineAmount);
+    mineAmount = option.mineAmount;
+    cols = option.cols;
+    rows = option.rows;
 }
 
 function mousePressed(e) {
@@ -78,20 +82,9 @@ function revealSpot() {
     return gameLost;
 }
 
-function startNewGame(init) {
-    if (!init)
-        select('#canvas-container')
-            .style('display', 'grid');
-
-    select('#mine-count').value(mineAmount);
-    currentMineAmount = mineAmount;
-    const w = cols * scl, h = rows * scl;
-    setupCanvas(w, h);
-
-    startGrid();
-}
-
 function initializeGrid() {
+    print('init');
+    background(255);
     forAllSpot(grid, (cell) => {
         cell.updateMineCount(grid);
         cell.show();
@@ -140,6 +133,19 @@ function winState() {
 }
 
 function loseState() {
+    console.log('LOSE');
+    function areAllTilesUntouch() {
+        let nbOfRevealedOrMarked = 0;
+        forAllSpot(grid, (cell) => {
+            if (cell.marked || cell.revealed) nbOfRevealedOrMarked++;
+        });
+
+        return nbOfRevealedOrMarked <= 1;
+    }
+    if (areAllTilesUntouch()) {
+        startGrid();
+        return;
+    }
     background(255);
     fill(0);
     strokeWeight(1);
