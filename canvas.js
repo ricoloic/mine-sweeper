@@ -37,12 +37,12 @@ function updateGameOptions() {
 }
 
 function mousePressed(e) {
-    if (e.button === 0)
+    if (e.button === 0) {
         if (revealSpot()) {
             loseState();
             return;
         }
-        else placeMarker();
+    } else placeMarker();
 
     background(255);
     forAllSpot(grid, (cell) => {
