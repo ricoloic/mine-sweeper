@@ -37,19 +37,21 @@ function updateGameOptions() {
 }
 
 function mousePressed(e) {
-    if (e.button === 0) {
-        if (revealSpot()) {
-            loseState();
-            return;
-        }
-    } else placeMarker();
+    if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+        if (e.button === 0) {
+            if (revealSpot()) {
+                loseState();
+                return;
+            }
+        } else placeMarker();
 
-    background(255);
-    forAllSpot(grid, (cell) => {
-        cell.show();
-    });
+        background(255);
+        forAllSpot(grid, (cell) => {
+            cell.show();
+        });
 
-    updateMineCount();
+        updateMineCount();
+    }
 }
 
 function setup() {
