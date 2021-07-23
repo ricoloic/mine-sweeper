@@ -68,6 +68,7 @@ Cell.prototype.constrain = function (x, y) {
 
 Cell.prototype.reveal = function (grid) {
   this.revealed = true;
+  this.marked = false;
 
   if (this.isMine || this.mineCount !== 0) return;
   this.forNeighbor(grid, (neighbor) => {
