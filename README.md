@@ -1,5 +1,6 @@
-to play:
+online: https://ricoloic.github.io/mine-sweeper/
 
+local:
   ```bash
     git clone https://github.com/ricoloic/mine-sweeper && cd mine-sweeper && code .
     # then just need to add the extension live-server on vsCode
