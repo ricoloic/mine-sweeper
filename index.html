@@ -18,9 +18,9 @@
             Difficulty
         </span>
         <select onchange="updateGameOptions()" name="difficulty" class="form-control" id="difficulty">
-            <option value="1">easy</option>
-            <option value="2">medium</option>
-            <option value="3">hard</option>
+            <option value="easy">easy</option>
+            <option value="medium">medium</option>
+            <option value="hard">hard</option>
         </select>
 
         <span class="input-group-text" id="inputGroup-sizing-lg">
@@ -28,7 +28,7 @@
         </span>
         <input type="text" class="form-control" value="" disabled id="mine-count">
 
-        <button type="button" class="btn btn-fullwidth btl-lg btn-danger" onclick="startNewGame()">New Game</button>
+        <button type="button" class="btn btn-fullwidth btl-lg btn-danger" onclick="newGame()">New Game</button>
     </div>
 
     <div id="canvas-container" style="display: none;"></div>
@@ -36,6 +36,7 @@
     <script src="difficultyOptions.js"></script>
     <script src="make2DGrid.js"></script>
     <script src="cell.js"></script>
+    <script src="minesweeper.js"></script>
     <script src="canvas.js"></script>
 </body>
 

@@ -23,7 +23,7 @@ Cell.prototype.show = function () {
 
   if (this.revealed) {
     if (this.isMine) {
-      image(bomb, this.x, this.y + 1.5, this.scl - 2, this.scl - 3);
+      image(explosion, this.x, this.y + 1.5, this.scl - 2, this.scl - 3);
     } else if (this.mineCount > 0) {
       strokeWeight(2);
       textAlign(CENTER);
@@ -37,7 +37,7 @@ Cell.prototype.show = function () {
 
 Cell.prototype.forNeighbor = function (grid, neighborAction) {
   function isSpotInGrid(a, b) {
-    return a >= 0 && a <= cols - 1 && b >= 0 && b <= rows - 1;
+    return a >= 0 && a <= grid.length - 1 && b >= 0 && b <= grid[0].length - 1;
   }
 
   for (let g = -1; g <= 1; g++)

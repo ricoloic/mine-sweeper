@@ -1,6 +1,6 @@
 
 const difficultyOptions = {
-  small: {
+  easy: {
     mineAmount: 10,
     cols: 9,
     rows: 9
